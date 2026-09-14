@@ -1,0 +1,180 @@
+/* ---------------------------------------------------------------
+   Personal site — Mohammadreza Ahmadnejadsaein
+   Edit the values in :root below to change colors and width.
+   --------------------------------------------------------------- */
+
+:root {
+  --accent:  #1f3864;   /* navy, same as the CV */
+  --ink:     #1a1a1a;   /* body text */
+  --muted:   #6b6b6b;   /* dates, secondary text */
+  --rule:    #e2e2e2;   /* hairlines */
+  --page:    #ffffff;
+  --measure: 44rem;     /* content width */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #9fb8e0;
+    --ink:    #e8e6e3;
+    --muted:  #a0a0a0;
+    --rule:   #333333;
+    --page:   #14161a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+a:hover { border-bottom-color: var(--accent); }
+
+/* ---------------------------------------------------------- masthead */
+
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.portrait {
+  width: 130px;
+  height: 130px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 3px;
+  filter: grayscale(15%);
+}
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--accent);
+  overflow-wrap: anywhere;   /* the surname is one long word; never let it overflow a phone */
+}
+
+.affiliation {
+  margin: 0 0 .8rem;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+.links a { border-bottom: none; }
+.links a:hover { border-bottom: 1px solid var(--accent); }
+
+.bio { margin: 0; }
+
+/* ---------------------------------------------------------- sections */
+
+section { margin-top: 2.75rem; }
+
+h2 {
+  margin: 0 0 1.1rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--accent);
+}
+
+/* two-column rows: date on the left, content on the right */
+
+.news, .entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.news li, .entries li {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0 1rem;
+  margin-bottom: .85rem;
+}
+
+.entries li p { margin: .2rem 0 0; color: var(--muted); font-size: .95rem; }
+
+.date {
+  color: var(--muted);
+  font-size: .88rem;
+  font-variant-numeric: tabular-nums;
+  padding-top: .18rem;
+}
+
+/* ---------------------------------------------------------- papers */
+
+.paper { margin-bottom: 1.9rem; }
+
+.paper h3 {
+  margin: 0 0 .2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.authors  { margin: 0; color: var(--muted); font-size: .95rem; }
+.venue    { margin: .15rem 0 0; font-size: .92rem; color: var(--accent); }
+.abstract { margin: .5rem 0 0; font-size: .95rem; }
+
+.paper-links {
+  margin: .4rem 0 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: .82rem;
+}
+
+/* ---------------------------------------------------------- footer */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: .85rem;
+}
+footer p { margin: 0; }
+
+/* ---------------------------------------------------------- mobile */
+
+@media (max-width: 600px) {
+  main { padding: 2.5rem 1.25rem 3rem; }
+  .masthead { flex-direction: column; gap: 1.25rem; }
+  .portrait { width: 110px; height: 110px; }
+  h1 { font-size: 1.6rem; }
+  .news li, .entries li { grid-template-columns: 1fr; gap: 0; }
+  .date { padding-top: 0; }
+}
